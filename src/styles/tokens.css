@@ -1,0 +1,16 @@
+/* Design tokens. Placeholder values — refined in Phase 3 (UI pass). */
+:root {
+  --color-bg: #ffffff;
+  --color-fg: #0a0a0a;
+  --color-muted: #6b7280;
+  --color-accent: #2563eb;
+  --color-border: #e5e7eb;
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #0a0a0a;
+  --color-fg: #fafafa;
+  --color-muted: #9ca3af;
+  --color-accent: #60a5fa;
+  --color-border: #262626;
+}
