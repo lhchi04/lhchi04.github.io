@@ -7,7 +7,7 @@ interface Props {
   project: Project;
 }
 const { project } = Astro.props;
-const { title, summary, tags, date, status } = project.data;
+const { title, summary, tags, date, endDate, status } = project.data;
 ---
 
 <article class="group relative w-full rounded-lg border border-border p-5 transition-colors hover:border-accent">
@@ -18,7 +18,7 @@ const { title, summary, tags, date, status } = project.data;
       </a>
     </h3>
     <span class="shrink-0 font-mono text-xs text-muted">
-      {status === 'wip' ? 'In progress' : formatDate(date)}
+      {status === 'wip' ? 'In progress' : formatDate(endDate ?? date)}
     </span>
   </div>
   <p class="mt-2 text-sm text-muted">{summary}</p>

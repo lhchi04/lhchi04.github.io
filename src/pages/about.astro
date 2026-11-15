@@ -1,20 +1,34 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SkillList from '../components/about/SkillList.astro';
 import { site } from '../lib/site';
 ---
 
-<BaseLayout title="About" description={`About ${site.name}.`}>
+<BaseLayout title="About" description={`About ${site.name}: ${site.headline}`}>
   <h1 class="text-3xl font-bold tracking-tight">About</h1>
-  <div class="prose mt-8">
-    <p>{site.bio}</p>
+  <p class="mt-6 text-lg">{site.bio}</p>
+  <p class="mt-4 text-muted">
+    I grew up in Hanoi, Vietnam, and came to the US for college. My Vietnamese name is Huệ Chi,
+    which is where <span class="font-mono text-fg">huesofchi</span> comes from.
+  </p>
+  <p class="mt-4 text-muted">
+    The best way to see how I work is my{' '}
+    <a href="/projects" class="text-accent hover:underline">
+      projects
+    </a>
+    , or reach me by{' '}
+    <a href={`mailto:${site.email}`} class="text-accent hover:underline">
+      email
+    </a>
+    .
+  </p>
 
-    <h2>What I work on</h2>
-    <p>Placeholder: the kinds of problems you like solving and the areas you focus on.</p>
-
-    <h2>Tools I use</h2>
-    <p>Placeholder: languages, frameworks, infrastructure.</p>
-
-    <h2>Experience</h2>
-    <p>Placeholder: a short timeline of roles, internships, or education.</p>
-  </div>
+  <section class="mt-16" aria-labelledby="skills-heading">
+    <h2 id="skills-heading" class="text-xl font-semibold">
+      Tools I use
+    </h2>
+    <div class="mt-6">
+      <SkillList />
+    </div>
+  </section>
 </BaseLayout>

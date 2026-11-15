@@ -1,14 +1,15 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Tag from '../components/ui/Tag.astro';
-import { formatDate, type Project } from '../lib/projects';
+import { formatPeriod, type Project } from '../lib/projects';
 import { Image } from 'astro:assets';
 
 interface Props {
   project: Project;
 }
 const { project } = Astro.props;
-const { title, summary, date, tags, role, repo, demo, cover, status } = project.data;
+const { title, summary, date, endDate, tags, role, repo, demo, cover, coverAlt, links, status } =
+  project.data;
 const statusLabel = { live: 'Live', wip: 'In progress', archived: 'Archived' }[status];
 ---
 
@@ -24,10 +25,8 @@ const statusLabel = { live: 'Live', wip: 'In progress', archived: 'Archived' }[s
 
       <dl class="mt-6 grid grid-cols-2 gap-4 text-sm sm:grid-cols-4">
         <div>
-          <dt class="text-muted">Date</dt>
-          <dd>
-            <time datetime={date.toISOString()}>{formatDate(date)}</time>
-          </dd>
+          <dt class="text-muted">When</dt>
+          <dd>{formatPeriod(date, endDate)}</dd>
         </div>
         <div>
           <dt class="text-muted">Status</dt>
@@ -39,10 +38,10 @@ const statusLabel = { live: 'Live', wip: 'In progress', archived: 'Archived' }[s
             <dd>{role}</dd>
           </div>
         )}
-        {(repo || demo) && (
+        {(repo || demo || links.length > 0) && (
           <div>
             <dt class="text-muted">Links</dt>
-            <dd class="flex gap-3">
+            <dd class="flex flex-wrap gap-x-3">
               {repo && (
                 <a
                   href={repo}
@@ -63,6 +62,16 @@ const statusLabel = { live: 'Live', wip: 'In progress', archived: 'Archived' }[s
                   Live
                 </a>
               )}
+              {links.map((l) => (
+                <a
+                  href={l.href}
+                  class="text-accent hover:underline"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {l.label}
+                </a>
+              ))}
             </dd>
           </div>
         )}
@@ -82,7 +91,7 @@ const statusLabel = { live: 'Live', wip: 'In progress', archived: 'Archived' }[s
     {cover && (
       <Image
         src={cover}
-        alt=""
+        alt={coverAlt ?? ''}
         class="mt-10 w-full rounded-lg border border-border"
         loading="eager"
       />

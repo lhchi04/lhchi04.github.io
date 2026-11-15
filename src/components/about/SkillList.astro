@@ -1,0 +1,21 @@
+---
+import { skills } from '../../lib/about';
+import Tag from '../ui/Tag.astro';
+---
+
+<dl class="space-y-4">
+  {skills.map((group) => (
+    <div>
+      <dt class="text-sm text-muted">{group.label}</dt>
+      <dd class="mt-2">
+        <ul class="flex flex-wrap gap-2">
+          {group.items.map((item) => (
+            <li>
+              <Tag label={item} />
+            </li>
+          ))}
+        </ul>
+      </dd>
+    </div>
+  ))}
+</dl>

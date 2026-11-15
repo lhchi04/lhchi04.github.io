@@ -1,23 +1,20 @@
 // Single source of truth for personal info used across the site.
-// TODO: replace placeholders with real details.
 export const site = {
-  name: 'Your Name',
-  headline: 'Software engineer building fast, reliable systems.',
-  bio: 'A short intro about who you are, what you build, and what you care about. Two or three sentences is plenty.',
+  name: 'Chi Le',
+  headline: 'Software engineer building backends, data pipelines and cloud services.',
+  bio: "I'm a software engineer. I like building systems that keep working when things go wrong: pipelines that can be safely rerun, services with least-privilege access, and cloud infrastructure that costs almost nothing to run.",
   description: 'Personal website and project portfolio.',
   url: 'https://huesofchi.com', // keep in sync with `site` in astro.config.mjs
   repo: 'https://github.com/lhchi04/lhchi04.github.io',
-  email: 'you@example.com',
-  resumePdf: null as string | null, // e.g. '/resume.pdf' once added to public/
+  email: 'lehuechi04@gmail.com',
   // Keep false while content is placeholder so search engines don't index it.
   indexable: false,
   socials: [
     { label: 'GitHub', href: 'https://github.com/lhchi04' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/your-handle' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/chile04/' },
   ],
   nav: [
     { label: 'Projects', href: '/projects' },
     { label: 'About', href: '/about' },
-    { label: 'Resume', href: '/resume' },
   ],
 } as const;

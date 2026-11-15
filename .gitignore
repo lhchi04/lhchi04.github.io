@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # local planning notes (root-level only; public/robots.txt is still tracked)
 /*.txt
+
+# private source material (resume source has phone number)
+/content/
