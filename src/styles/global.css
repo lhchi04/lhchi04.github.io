@@ -9,10 +9,19 @@
   --color-muted: var(--color-muted);
   --color-accent: var(--color-accent);
   --color-border: var(--color-border);
+  --color-navy: var(--palette-navy);
+  --color-current: var(--palette-current);
+  --color-arctic: var(--palette-arctic);
+  --color-haze: var(--palette-haze);
+  --color-snow: var(--palette-snow);
 }
 
 html {
-  color-scheme: light dark;
+  color-scheme: dark;
+}
+
+html[data-theme='light'] {
+  color-scheme: light;
 }
 
 body {

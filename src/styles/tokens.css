@@ -1,16 +1,31 @@
-/* Design tokens. Placeholder values — refined in Phase 3 (UI pass). */
+/*
+ * Design tokens.
+ * Palette: "Underwater Serenade" — deep-sea navy to pale ice blue.
+ *   Abyssal Navy #01162b · Cold Current #00385a · Arctic Mist #6a90b4
+ *   Haze #94a2bf · Snow Veil #d2dbeb
+ * Text pairs meet WCAG AA (>= 4.5:1). Arctic Mist and Haze are below 4.5:1 on
+ * light backgrounds, so in light mode use them for decoration only, not text.
+ */
 :root {
-  --color-bg: #ffffff;
-  --color-fg: #0a0a0a;
-  --color-muted: #6b7280;
-  --color-accent: #2563eb;
-  --color-border: #e5e7eb;
+  /* Raw palette — for gradients and decoration */
+  --palette-navy: #01162b;
+  --palette-current: #00385a;
+  --palette-arctic: #6a90b4;
+  --palette-haze: #94a2bf;
+  --palette-snow: #d2dbeb;
+
+  /* Semantic tokens — light mode */
+  --color-bg: #f4f7fb; /* Snow Veil tint */
+  --color-fg: var(--palette-navy); /* 17:1 */
+  --color-muted: #4b6584; /* deepened Arctic Mist, 5.6:1 */
+  --color-accent: var(--palette-current); /* 11.4:1 */
+  --color-border: var(--palette-snow);
 }
 
 :root[data-theme='dark'] {
-  --color-bg: #0a0a0a;
-  --color-fg: #fafafa;
-  --color-muted: #9ca3af;
-  --color-accent: #60a5fa;
-  --color-border: #262626;
+  --color-bg: var(--palette-navy);
+  --color-fg: var(--palette-snow); /* 13.1:1 */
+  --color-muted: var(--palette-haze); /* 7.1:1 */
+  --color-accent: var(--palette-arctic); /* 5.4:1 */
+  --color-border: var(--palette-current);
 }

@@ -16,7 +16,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,6 +38,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url);
     <meta name="generator" content={Astro.generator} />
     <script is:inline>
       // Set theme before paint to avoid a flash of the wrong theme.
+      // Dark is the default; a visitor's toggle choice is remembered.
       (() => {
         let theme;
         try {
@@ -45,7 +46,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url);
         } catch {
           // storage unavailable (private mode / blocked) — fall back to system preference
         }
-        if (!theme) theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        if (theme !== 'light') theme = 'dark';
         document.documentElement.dataset.theme = theme;
       })();
     </script>
