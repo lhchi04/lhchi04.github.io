@@ -1,0 +1,31 @@
+---
+import { site } from '../../lib/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border">
+  <div class="mx-auto flex max-w-3xl flex-col gap-3 px-4 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+    <p>
+      © {year} {site.name}
+    </p>
+    <ul class="flex flex-wrap gap-4">
+      {site.socials.map((s) => (
+        <li>
+          <a href={s.href} class="hover:text-fg" rel="noopener noreferrer" target="_blank">
+            {s.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a href={`mailto:${site.email}`} class="hover:text-fg">
+          Email
+        </a>
+      </li>
+      <li>
+        <a href={site.repo} class="hover:text-fg" rel="noopener noreferrer" target="_blank">
+          Source
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>

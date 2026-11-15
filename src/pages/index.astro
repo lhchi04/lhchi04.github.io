@@ -1,12 +1,48 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectGrid from '../components/projects/ProjectGrid.astro';
 import { site } from '../lib/site';
+import { getFeaturedProjects } from '../lib/projects';
+
+const featured = await getFeaturedProjects();
 ---
 
 <BaseLayout>
-  <main class="mx-auto max-w-3xl px-4 py-24">
+  <section>
     <h1 class="text-4xl font-bold tracking-tight">{site.name}</h1>
     <p class="mt-4 text-lg text-muted">{site.headline}</p>
-    <p class="mt-8 text-sm text-muted">Site under construction — Phase 0.</p>
-  </main>
+    <ul class="mt-6 flex flex-wrap gap-4 text-sm">
+      {site.socials.map((s) => (
+        <li>
+          <a
+            href={s.href}
+            class="text-accent hover:underline"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {s.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a href={`mailto:${site.email}`} class="text-accent hover:underline">
+          Email
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="mt-20" aria-labelledby="featured-heading">
+    <div class="flex items-baseline justify-between">
+      <h2 id="featured-heading" class="text-xl font-semibold">
+        Featured projects
+      </h2>
+      <a href="/projects" class="text-sm text-muted hover:text-fg">
+        View all →
+      </a>
+    </div>
+    <div class="mt-6">
+      <ProjectGrid projects={featured} />
+    </div>
+  </section>
 </BaseLayout>

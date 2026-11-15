@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout title="About" description={`About ${site.name}.`}>
+  <h1 class="text-3xl font-bold tracking-tight">About</h1>
+  <div class="prose mt-8">
+    <p>{site.bio}</p>
+
+    <h2>What I work on</h2>
+    <p>Placeholder: the kinds of problems you like solving and the areas you focus on.</p>
+
+    <h2>Tools I use</h2>
+    <p>Placeholder: languages, frameworks, infrastructure.</p>
+
+    <h2>Experience</h2>
+    <p>Placeholder: a short timeline of roles, internships, or education.</p>
+  </div>
+</BaseLayout>

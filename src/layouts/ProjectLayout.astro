@@ -1,0 +1,95 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Tag from '../components/ui/Tag.astro';
+import { formatDate, type Project } from '../lib/projects';
+import { Image } from 'astro:assets';
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+const { title, summary, date, tags, role, repo, demo, cover, status } = project.data;
+const statusLabel = { live: 'Live', wip: 'In progress', archived: 'Archived' }[status];
+---
+
+<BaseLayout title={title} description={summary} type="article">
+  <article>
+    <a href="/projects" class="text-sm text-muted hover:text-fg">
+      ← All projects
+    </a>
+
+    <header class="mt-6">
+      <h1 class="text-3xl font-bold tracking-tight">{title}</h1>
+      <p class="mt-3 text-lg text-muted">{summary}</p>
+
+      <dl class="mt-6 grid grid-cols-2 gap-4 text-sm sm:grid-cols-4">
+        <div>
+          <dt class="text-muted">Date</dt>
+          <dd>
+            <time datetime={date.toISOString()}>{formatDate(date)}</time>
+          </dd>
+        </div>
+        <div>
+          <dt class="text-muted">Status</dt>
+          <dd>{statusLabel}</dd>
+        </div>
+        {role && (
+          <div>
+            <dt class="text-muted">Role</dt>
+            <dd>{role}</dd>
+          </div>
+        )}
+        {(repo || demo) && (
+          <div>
+            <dt class="text-muted">Links</dt>
+            <dd class="flex gap-3">
+              {repo && (
+                <a
+                  href={repo}
+                  class="text-accent hover:underline"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Code
+                </a>
+              )}
+              {demo && (
+                <a
+                  href={demo}
+                  class="text-accent hover:underline"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Live
+                </a>
+              )}
+            </dd>
+          </div>
+        )}
+      </dl>
+
+      {tags.length > 0 && (
+        <ul class="mt-6 flex flex-wrap gap-2" aria-label="Tech used">
+          {tags.map((t) => (
+            <li>
+              <Tag label={t} />
+            </li>
+          ))}
+        </ul>
+      )}
+    </header>
+
+    {cover && (
+      <Image
+        src={cover}
+        alt=""
+        class="mt-10 w-full rounded-lg border border-border"
+        loading="eager"
+      />
+    )}
+
+    <div class="prose mt-10">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

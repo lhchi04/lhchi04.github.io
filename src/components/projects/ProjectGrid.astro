@@ -1,0 +1,21 @@
+---
+import type { Project } from '../../lib/projects';
+import ProjectCard from './ProjectCard.astro';
+
+interface Props {
+  projects: Project[];
+}
+const { projects } = Astro.props;
+---
+
+{projects.length > 0 ? (
+  <ul class="grid gap-4 sm:grid-cols-2">
+    {projects.map((project) => (
+      <li class="flex">
+        <ProjectCard project={project} />
+      </li>
+    ))}
+  </ul>
+) : (
+  <p class="text-muted">No projects yet.</p>
+)}

@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectGrid from '../../components/projects/ProjectGrid.astro';
+import { getProjects } from '../../lib/projects';
+
+const projects = await getProjects();
+---
+
+<BaseLayout title="Projects" description="Things I've built.">
+  <h1 class="text-3xl font-bold tracking-tight">Projects</h1>
+  <p class="mt-3 text-muted">Things I've built, newest first.</p>
+  <div class="mt-10">
+    <ProjectGrid projects={projects} />
+  </div>
+</BaseLayout>

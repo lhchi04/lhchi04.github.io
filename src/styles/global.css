@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import './tokens.css';
+@plugin '@tailwindcss/typography';
 
 /* Expose tokens to Tailwind as utilities: bg-bg, text-fg, text-muted, ... */
 @theme inline {
@@ -17,4 +18,21 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-fg);
+}
+
+/* Typography plugin colors follow the design tokens */
+.prose {
+  --tw-prose-body: var(--color-fg);
+  --tw-prose-headings: var(--color-fg);
+  --tw-prose-links: var(--color-accent);
+  --tw-prose-bold: var(--color-fg);
+  --tw-prose-code: var(--color-fg);
+  --tw-prose-bullets: var(--color-muted);
+  --tw-prose-counters: var(--color-muted);
+  --tw-prose-hr: var(--color-border);
+  --tw-prose-quotes: var(--color-fg);
+  --tw-prose-quote-borders: var(--color-border);
+  --tw-prose-captions: var(--color-muted);
+  --tw-prose-th-borders: var(--color-border);
+  --tw-prose-td-borders: var(--color-border);
 }
