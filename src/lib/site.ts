@@ -4,7 +4,7 @@ export const site = {
   name: 'Your Name',
   headline: 'Software engineer building fast, reliable systems.',
   description: 'Personal website and project portfolio.',
-  url: 'https://example.com', // keep in sync with `site` in astro.config.mjs
+  url: 'https://huesofchi.com', // keep in sync with `site` in astro.config.mjs
   email: 'you@example.com',
   socials: {
     github: 'https://github.com/your-handle',

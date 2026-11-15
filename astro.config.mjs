@@ -5,8 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: set to the real domain (also update src/lib/site.ts and public/robots.txt)
-  site: 'https://example.com',
+  site: 'https://huesofchi.com',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
